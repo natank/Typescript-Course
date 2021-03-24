@@ -1,0 +1,24 @@
+{
+  "name": "typescript-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc" : "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natank/Typescript-Course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natank/Typescript-Course/issues"
+  },
+  "homepage": "https://github.com/natank/Typescript-Course#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
