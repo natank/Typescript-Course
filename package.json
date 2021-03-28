@@ -1,24 +1,33 @@
 {
-  "name": "typescript-course",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc" : "ts-node index.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/natank/Typescript-Course.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/natank/Typescript-Course/issues"
-  },
-  "homepage": "https://github.com/natank/Typescript-Course#readme",
-  "dependencies": {
-    "axios": "^0.21.1"
-  }
+	"name": "typescript-course",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start:build": "tsc -W",
+		"start:run": "nodemon build/index.js",
+		"start": "concurrently npm:start:*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/natank/Typescript-Course.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/natank/Typescript-Course/issues"
+	},
+	"homepage": "https://github.com/natank/Typescript-Course#readme",
+	"dependencies": {
+		"@types/faker": "^5.1.7",
+		"@types/googlemaps": "^3.43.3",
+		"axios": "^0.21.1",
+		"faker": "^5.5.0"
+	},
+	"devDependencies": {
+		"concurrently": "^6.0.0",
+		"nodemon": "^2.0.7",
+		"typescript": "^4.2.3"
+	}
 }
