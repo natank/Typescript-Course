@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var NumbersCollection_1 = require("./NumbersCollection");
-var CharactersCollection_1 = require("./CharactersCollection");
-var LinkedList_1 = require("./LinkedList");
-var numbersCollection = new NumbersCollection_1.NumbersCollection([110000, 3, -5, 0]);
-numbersCollection.sort();
-console.log(numbersCollection.data);
-var charactersCollection = new CharactersCollection_1.CharactersCollection('Xaayb');
-charactersCollection.sort();
-console.log(charactersCollection.data);
-var linkedList = new LinkedList_1.LinkedList([45, -1, -50, 1000]);
-linkedList.sort();
-linkedList.print();
+var MatchReader_1 = require("./MatchReader");
+var CsvFileReader_1 = require("./CsvFileReader");
+var Summary_1 = require("./Summary");
+var WinsAnalysis_1 = require("./analyzers/WinsAnalysis");
+var HtmlReport_1 = require("./reportTargets/HtmlReport");
+// Create an object that satisifies the 'DataReader' interface
+var csvFileReader = new CsvFileReader_1.CsvFileReader('football.csv');
+// Create an instance of MatchReader
+var matchReader = new MatchReader_1.MatchReader(csvFileReader);
+matchReader.load();
+var summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReport_1.HtmlReport());
+summary.buildAndPrintReport(matchReader.matches);

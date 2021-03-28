@@ -1,15 +1,15 @@
-import { NumbersCollection } from './NumbersCollection';
-import { CharactersCollection } from './CharactersCollection';
-import { LinkedList } from './LinkedList';
+import { MatchReader } from './MatchReader';
+import { CsvFileReader } from './CsvFileReader';
+import { Summary } from './Summary';
+import { ConsoleReport } from './reportTargets/ConsoleReports';
+import { WinsAnalysis } from './analyzers/WinsAnalysis';
+import { HtmlReport } from './reportTargets/HtmlReport';
 
-const numbersCollection = new NumbersCollection([110000, 3, -5, 0]);
-numbersCollection.sort();
-console.log(numbersCollection.data);
+// Create an object that satisifies the 'DataReader' interface
+const csvFileReader = new CsvFileReader('football.csv');
+// Create an instance of MatchReader
+const matchReader = new MatchReader(csvFileReader);
+matchReader.load();
 
-const charactersCollection = new CharactersCollection('Xaayb');
-charactersCollection.sort();
-console.log(charactersCollection.data);
-
-const linkedList = new LinkedList([45, -1, -50, 1000]);
-linkedList.sort();
-linkedList.print();
+const summary = new Summary(new WinsAnalysis('Man United'), new HtmlReport());
+summary.buildAndPrintReport(matchReader.matches);
