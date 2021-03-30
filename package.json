@@ -6,7 +6,8 @@
 	"scripts": {
 		"start:build": "tsc -W",
 		"start:run": "nodemon build/index.js",
-		"start": "parcel index.html"
+		"start": "parcel index.html",
+		"json-server": "json-server -w db.json"
 	},
 	"repository": {
 		"type": "git",
