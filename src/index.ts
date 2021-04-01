@@ -1,17 +1,15 @@
-import {User} from './models/User'
+import { UserList } from './views/UserList';
+import { Collection } from './models/Collection';
+import { User, UserProps } from './models/User';
 
-const user = new User({name: 'myname', age: 20});
+const users = new Collection((json: UserProps) => {
+	return User.buildUser(json);
+});
 
-user.on('change', ()=>{
-  console.log("change#1")
-})
-
-user.on('change', ()=>{
-  console.log("change#2")
-})
-
-user.on('change222', ()=>{
-  console.log("change#3 was triggered")
-})
-
-user.trigger('change222fafdsaasdf')
+users.on('change', () => {
+	const root = document.getElementById('root');
+	if (root) {
+		new UserList(root, users).render();
+	}
+});
+users.fetch();
