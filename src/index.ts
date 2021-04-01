@@ -1,15 +1,13 @@
-import { UserList } from './views/UserList';
-import { Collection } from './models/Collection';
-import { User, UserProps } from './models/User';
+import express, { Request, Response } from 'express';
+import { router } from './routes/loginRoutes';
+import cookieSession from 'cookie-session';
 
-const users = new Collection((json: UserProps) => {
-	return User.buildUser(json);
-});
+const app = express();
 
-users.on('change', () => {
-	const root = document.getElementById('root');
-	if (root) {
-		new UserList(root, users).render();
-	}
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieSession({ keys: ['fdjhld'] }));
+app.use(router);
+
+app.listen(3000, () => {
+	console.log('Listening on port 3000');
 });
-users.fetch();
